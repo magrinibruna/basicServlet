@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.http.Cookies;
 
 //o urlpatterns define quem vai passar por esse filtro (/* significa todos)
-@WebFilter(urlPatterns = "/*")
+@WebFilter(urlPatterns = "/cookie")
 public class FiltroCookie implements Filter {
 
 	@Override

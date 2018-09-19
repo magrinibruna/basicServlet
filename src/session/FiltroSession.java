@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Usuario;
 
-@WebFilter(urlPatterns = "/loginSession")
+@WebFilter(urlPatterns = "/session")
 public class FiltroSession implements Filter {
 
 	@Override
@@ -31,7 +31,7 @@ public class FiltroSession implements Filter {
 
 		String usuarioLogado = "";
 
-		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario.logado");
+		String usuario = (String) req.getSession().getAttribute("usuario.logado");
 		if (usuario == null)
 			usuarioLogado = "<deslogado>";
 

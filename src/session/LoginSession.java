@@ -24,10 +24,10 @@ public class LoginSession extends HttpServlet{
 		String senha = req.getParameter("senha");
 		
 		if(usuarioP.equals(usuario) && senhaP.equals(senha)) {
-			//armazenando o usuario dentro da sessã
+			//armazenando o usuario dentro da sessão
 			HttpSession session = req.getSession();
 			session.setAttribute("usuario.logado", usuario);
-			p.println("Logado com sucesso");
+			p.println(session.getAttribute("usuario.logado") +  "logado com sucesso");
 		} else {
 			p.println("Usuario inválido");
 		}
