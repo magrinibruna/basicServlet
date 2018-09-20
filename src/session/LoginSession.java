@@ -3,6 +3,7 @@ package session;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +16,6 @@ public class LoginSession extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter p = resp.getWriter();
-		
 		String usuarioP = "bruna";
 		String senhaP = "1";
 		
@@ -26,10 +25,12 @@ public class LoginSession extends HttpServlet{
 		if(usuarioP.equals(usuario) && senhaP.equals(senha)) {
 			//armazenando o usuario dentro da sessão
 			HttpSession session = req.getSession();
-			session.setAttribute("usuario.logado", usuario);
-			p.println(session.getAttribute("usuario.logado") +  "logado com sucesso");
+			session.setAttribute("usuarioLogado", usuario);
+			req.setAttribute("usuario", usuario);
+			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/view/login.jsp");
+			requestDispatcher.forward(req, resp);
 		} else {
-			p.println("Usuario inválido");
+			
 		}
 	
 	}

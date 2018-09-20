@@ -16,7 +16,7 @@ public class LogoutSecao extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		//tira o atributo
-		req.getSession().removeAttribute("usuario.logado");
+		req.getSession().removeAttribute("usuarioLogado");
 	
 		//invalida a sessão
 		req.getSession().invalidate();

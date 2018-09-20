@@ -31,7 +31,7 @@ public class FiltroSession implements Filter {
 
 		String usuarioLogado = "";
 
-		String usuario = (String) req.getSession().getAttribute("usuario.logado");
+		String usuario = (String) req.getSession().getAttribute("usuarioLogado");
 		if (usuario == null)
 			usuarioLogado = "<deslogado>";
 

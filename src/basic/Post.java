@@ -2,8 +2,8 @@
 package basic;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,9 +15,10 @@ public class Post extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		PrintWriter p = resp.getWriter();
-		p.println("Nome: " + req.getParameter("nome"));
-		p.println("Sobrenome: " + req.getParameter("sobrenome"));
+		req.setAttribute("nome", req.getParameter("nome"));
+		req.setAttribute("sobrenome", req.getParameter("sobrenome"));
+		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/view/nome.jsp");
+		requestDispatcher.forward(req, resp);
 	}
 
 }
